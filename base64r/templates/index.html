@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="" method="POST" enctype=multipart/form-data class="well">
+{{ form.csrf_token }}
+  <h2>Decode base64 encoded document</h2>
+    {% for field in form %}
+      {% if field.type == "TextField" or field.type == "TextAreaField" %}
+          <fieldset {% if  field.errors  %}class="control-group error" {% endif %}>
+            <label> {{ field.label }}</label>
+            {{ field }}
+            <span class="help-inline">{{ field.description }}</span>
+          </fieldset>
+      {% endif %}
+    {% endfor %}
+  <div><button class="btn btn-primary" type=submit>Decode</button></div>
+</form>
+<hr />
+{% endblock %}
+

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Base64r</title>
+  <link rel=stylesheet type=text/css href="/static/css/bootstrap.css">
+  <style type="text/css">body {padding-top: 60px; padding-bottom: 40px;}</style>
+</head>
+<body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="brand">Base64r</div>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li>
+              <a  href="/">Home</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+      <div class="alert {{ category }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+    {% block body %}{% endblock %}
+  </div>
+</body>
+</html>
+
