@@ -12,7 +12,7 @@ A list of requirements can be found in the requirements.pip file.
 
 You should change the SECRET_KEY in the main.cfg file to be something more secure.
 
-A development server by running "python run_dev_server.py".
+A development server can be started by running "python run_dev_server.py".
 
 If used in a production environment the static and the OUTPUT_FOLDER (set in main.cfg) need to be served by a Web Server (eg. Apache or Nginx) since they will perform a lot better than flask.
 
