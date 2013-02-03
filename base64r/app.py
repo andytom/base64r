@@ -23,9 +23,12 @@ app.config.from_pyfile('main.cfg')
 #------------------------------------------------------------------------------#
 @app.route( '/', methods=['GET', 'POST'] )
 def index():
+    """Index page for base64r"""
     form = decode_form()
 
     if form.validate_on_submit():
+        # TODO
+        # Write a custom validator for this
         try:
             written_file = base64_decode( form.content.data,
                                           form.ext.data,
@@ -40,6 +43,6 @@ def index():
 
 @app.route( '/downloads/<path:filename>' )
 def download( filename ):
-#    filename = 
+    """Handle downloads when being run behind a Web Server"""
     return send_from_directory(app.config['OUTPUT_FOLDER'], filename )
 
