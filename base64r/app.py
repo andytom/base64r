@@ -28,7 +28,8 @@ def index():
 
     if form.validate_on_submit():
         # TODO
-        # Write a custom validator for this
+        # Write a custom validator for checking the contents of the data is 
+        # valid base64.
         try:
             written_file = base64_decode( form.content.data,
                                           form.ext.data,
@@ -43,6 +44,8 @@ def index():
 
 @app.route( '/downloads/<path:filename>' )
 def download( filename ):
-    """Handle downloads when being run behind a Web Server"""
+    """Handle downloads when not being run behind a Web Server."""
+    # From my testing this should safely handle filename if someone
+    # includes a "../" or something similar however might be worth .
     return send_from_directory(app.config['OUTPUT_FOLDER'], filename )
 
