@@ -4,7 +4,7 @@
 {{ form.csrf_token }}
   <h2>Decode base64 encoded document</h2>
     {% for field in form %}
-      {% if field.type == "TextField" or field.type == "TextAreaField" %}
+      {% if field.type != "CSRFTokenField" %}
           <fieldset {% if  field.errors  %}class="control-group error" {% endif %}>
             <label> {{ field.label }}</label>
             {{ field }}
