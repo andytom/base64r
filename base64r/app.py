@@ -41,5 +41,7 @@ def index():
 @app.route( '/downloads/<path:filename>' )
 def download( filename ):
 #    filename = 
-    return send_from_directory(app.config['OUTPUT_FOLDER'], filename )
+    if app.config['DEBUG']:
+        return send_from_directory(app.config['OUTPUT_FOLDER'], filename )
+    abort(500)
 
