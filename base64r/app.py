@@ -45,7 +45,10 @@ def index():
 @app.route( '/downloads/<path:filename>' )
 def download( filename ):
     """Handle downloads when not being run behind a Web Server."""
-    # From my testing this should safely handle filename if someone
-    # includes a "../" or something similar however might be worth .
-    return send_from_directory(app.config['OUTPUT_FOLDER'], filename )
+    if app.config['DEBUG']:
+        # From my testing this should safely handle filename if someone
+        # includes a "../" or something similar however might be worth a 
+        # second look.
+        return send_from_directory(app.config['OUTPUT_FOLDER'], filename )
+    abort(500)
 
