@@ -34,6 +34,11 @@ class LibTestCase(unittest.TestCase):
         with open(result['fullpath'], 'r') as f:
             self.assertEqual(f.read(), self.string)
 
+    def test_create_filename(self):
+        file_1 = base64r.lib.create_filename('txt')
+        file_2 = base64r.lib.create_filename('txt')
+        self.assertNotEqual(file_1, file_2)
+
 
 #-----------------------------------------------------------------------------#
 if __name__ == '__main__':
