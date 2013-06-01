@@ -12,6 +12,8 @@
 import os
 import uuid
 import base64
+import magic
+import mimetypes
 
 
 #-----------------------------------------------------------------------------#
@@ -43,11 +45,25 @@ def write_file(bin_data, filename, directory):
     return {"filename": filename, "fullpath": full_filename}
 
 
-def base64_decode(base64_string, extention, directory):
+def guess_extention(bin_data):
+    mime_type = magic.from_buffer(bin_data, mime=True)
+    if mime_type == 'text/plain':
+        # mimetypes returns '.ksh'
+        return 'txt'
+    ext = mimetypes.guess_extension(mime_type)
+    if ext is None:
+        # Default to 'dat'
+        ext = 'dat'
+    return ext.replace('.', '')
+
+
+def base64_decode(base64_string, directory, extention=None):
     """Decode the Base64 sting and write it to a file random named file with
        the passed extention in the passed directory.
     """
     bin_data = base64.b64decode(base64_string)
+    if extention is None:
+        extention = guess_extention(bin_data)
     filename = create_filename(extention)
 
     return write_file(bin_data, filename, directory)

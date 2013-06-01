@@ -33,8 +33,9 @@ def index():
         # valid base64.
         try:
             written_file = base64_decode(form.content.data,
-                                         form.ext.data,
-                                         app.config['OUTPUT_FOLDER'])
+                                         app.config['OUTPUT_FOLDER'],
+                                         form.ext.data
+                                         )
             filename = written_file['filename']
             flash("File Scuessfully decoded", "alert-success")
             return render_template('download.html', filename=filename)
