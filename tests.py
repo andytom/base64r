@@ -37,8 +37,7 @@ class LibTestCase(unittest.TestCase):
         self.assertNotEqual(file_1, file_2)
 
     def test_guess_extention_txt(self):
-        ext = base64r.lib.guess_extention('A Test String')
-        self.assertEqual(ext, 'txt')
+        self._run_extention_test("resources/example.txt", 'txt')
 
     def test_guess_extention_pdf(self):
         self._run_extention_test("resources/example.pdf", 'pdf')
