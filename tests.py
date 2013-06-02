@@ -18,9 +18,6 @@ class LibTestCase(unittest.TestCase):
         self.string = 'A Test String'
 
     def tearDown(self):
-        self._rmdir()
-
-    def _rmdir(self):
         shutil.rmtree(self.dir, ignore_errors=True)
 
     def test_ensure_dir(self):
@@ -43,13 +40,16 @@ class LibTestCase(unittest.TestCase):
         ext = base64r.lib.guess_extention('A Test String')
         self.assertEqual(ext, 'txt')
 
-    @unittest.skipUnless(os.path.exists("resources/example.pdf"),
-                         "Unable to find 'resources/example.pdf' skipping"
-                         )
     def test_guess_extention_pdf(self):
-        with open("resources/example.pdf", 'rb') as f:
+        self._run_extention_test("resources/example.pdf", 'pdf')
+
+    def test_guess_extention_doc(self):
+        self._run_extention_test("resources/example.doc", 'doc')
+
+    def _run_extention_test(self, filename, result):
+        with open(filename, 'rb') as f:
             ext = base64r.lib.guess_extention(f.read())
-        self.assertEqual(ext, 'pdf')
+        self.assertEqual(ext, result)
 
 
 #-----------------------------------------------------------------------------#
