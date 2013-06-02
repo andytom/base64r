@@ -37,8 +37,6 @@ def write_file(bin_data, filename, directory):
     """Save the passed file as filename in the passed directory."""
     full_filename = os.path.join(directory, filename)
     ensure_dir(full_filename)
-
-    # Write bin data
     with open(full_filename, 'wb') as f:
         f.write(bin_data)
 
@@ -48,11 +46,11 @@ def write_file(bin_data, filename, directory):
 def guess_extention(bin_data):
     mime_type = magic.from_buffer(bin_data, mime=True)
     if mime_type == 'text/plain':
-        # mimetypes returns '.ksh'
+        # mimetypes returns 'ksh' (or a huge list)
         return 'txt'
     ext = mimetypes.guess_extension(mime_type)
     if ext is None:
-        # Default to 'dat'
+        # Default to 'dat' if we don't get anything
         ext = 'dat'
     return ext.replace('.', '')
 
