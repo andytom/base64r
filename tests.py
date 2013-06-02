@@ -45,6 +45,10 @@ class LibTestCase(unittest.TestCase):
     def test_guess_extention_doc(self):
         self._run_extention_test("resources/example.doc", 'doc')
 
+    @unittest.skip("Magic picks this up as a zip file.")
+    def test_guess_extention_docx(self):
+        self._run_extention_test("resources/example.docx", 'docx')
+
     def _run_extention_test(self, filename, result):
         with open(filename, 'rb') as f:
             ext = base64r.lib.guess_extention(f.read())
