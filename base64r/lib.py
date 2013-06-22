@@ -61,12 +61,12 @@ def guess_extention(bin_data):
     return ext.replace('.', '')
 
 
-def base64_decode(base64_string, directory, extention=None):
+def base64_decode(base64_string, directory, extention=''):
     """Decode the Base64 sting and write it to a file random named file with
        the passed extention in the passed directory.
     """
     bin_data = base64.b64decode(base64_string)
-    if extention is None:
+    if extention == '':
         extention = guess_extention(bin_data)
     filename = create_filename(extention)
 

@@ -21,7 +21,5 @@ class decode_form(Form):
                             )
 
     ext = TextField('Extention',
-                    validators=[Required()],
-                    description="""What it the file extention of the
-                    document?"""
+                    description="The file extention of the document?"
                     )
