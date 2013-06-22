@@ -45,13 +45,19 @@ def write_file(bin_data, filename, directory):
 
 def guess_extention(bin_data):
     mime_type = magic.from_buffer(bin_data, mime=True)
-    if mime_type == 'text/plain':
-        # mimetypes returns 'ksh' (or a huge list)
-        return 'txt'
-    ext = mimetypes.guess_extension(mime_type)
-    if ext is None:
+    ext_list = mimetypes.guess_all_extensions(mime_type)
+
+    if len(ext_list) == 0:
         # Default to 'dat' if we don't get anything
-        ext = 'dat'
+        return 'dat'
+
+    # Defult to the more common extentions when they are available
+    # If not grab the first one available.
+    if '.txt' in ext_list:
+        ext = '.txt'
+    else:
+        ext = ext_list[0]
+
     return ext.replace('.', '')
 
 
