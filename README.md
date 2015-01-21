@@ -18,3 +18,5 @@ A development server can be started by running ```python run_dev_server.py```
 * Limit the filesize
 * Test for valid base64
 * Use cStringIOs when available
+* Better Test
+ * Test for unknow file types ('.dat')

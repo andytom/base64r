@@ -31,8 +31,8 @@ def guess_extention(bin_data):
     ext_list = mimetypes.guess_all_extensions(mime_type)
 
     if len(ext_list) == 0:
-        # Default to 'dat' if we don't get anything
-        return 'dat'
+        # Default to '.dat' if we don't get anything
+        return '.dat'
 
     # Defult to the more common extentions when they are available
     # If not grab the first one available.
