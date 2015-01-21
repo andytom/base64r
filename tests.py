@@ -11,11 +11,12 @@ import base64r.lib
 #-----------------------------------------------------------------------------#
 class LibTestCase(unittest.TestCase):
     """Tests to test the libary functions"""
-    def setUp(self):
-        self.dir = '/tmp/base64r/test/'
-        self.file = 'test_file'
-        self.fullpath = os.path.join(self.dir, self.file)
-        self.string = 'A Test String'
+    def test_base64_to_stringIO(self):
+        input_str = 'Test\nTest\nTest'
+        base64_str = base64.b64encode(input_str)
+        strIO, _ = base64r.lib.base64_to_stringio(base64_str)
+        decoded_str = strIO.read()
+        self.assertEqual(input_str, decoded_str)
 
     def test_create_filename(self):
         file_1 = base64r.lib.create_filename('txt')
