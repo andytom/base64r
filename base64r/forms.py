@@ -19,9 +19,6 @@ class decode_form(Form):
                             validators=[Required()],
                             description="Base 64 encoded string to be decoded"
                             )
-
-    ext = TextField('Extention',
-                    validators=[Required()],
-                    description="""What it the file extention of the
-                    document?"""
-                    )
+    filename = TextField('Filename',
+                         description="The filename of the document"
+                         )
