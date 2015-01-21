@@ -8,7 +8,7 @@ base64r is a simple tool for decoding base64 strings into binary documents.
 
 ## Usage
 
-A list of requirements can be found in the requirements.pip file.
+A list of requirements can be found in the requirements.txt file.
 
 You should change the ```SECRET_KEY``` in the main.cfg file to be something more secure.
 
