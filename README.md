@@ -13,3 +13,8 @@ A list of requirements can be found in the requirements.pip file.
 You should change the ```SECRET_KEY``` in the main.cfg file to be something more secure.
 
 A development server can be started by running ```python run_dev_server.py```
+
+## TODO
+* Limit the filesize
+* Test for valid base64
+* Use cStringIOs when available
